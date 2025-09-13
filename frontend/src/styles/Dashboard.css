@@ -1,0 +1,531 @@
+.dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1b1b 0%, #2a292b 100%);
+  font-family: "Arial", sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(6, 156, 124, 0.863);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-header h1 {
+  color: white;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.dashboard-content {
+  padding: 2rem;
+  background-color: #5cc9a8;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.producers-section,
+.marketplace-section,
+.analytics-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.marketplace-section {
+  height: fit-content;
+}
+
+.analytics-section {
+  grid-column: 1 / -1;
+}
+
+/* Connect Wallet Styles */
+.connect-wallet {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.connect-button,
+.disconnect-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.connect-button {
+  background: #4caf50;
+  color: white;
+  transition: all 300ms ease;
+  transition-delay: 0s;
+}
+
+.connect-button:hover {
+  transform: scale(1.05);
+}
+
+.connect-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.disconnect-button {
+  background: #f44336;
+  color: white;
+}
+
+.wallet-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: white;
+}
+
+/* Producer List Styles */
+.producers-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.producer-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background: #f9f9f9;
+}
+
+.producer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.status.active {
+  background: #4caf50;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+/* Marketplace Styles */
+.market-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.price-display {
+  text-align: center;
+  padding: 1rem;
+  background: #e3f2fd;
+  border-radius: 8px;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1976d2;
+  margin: 0;
+}
+
+.balance-info {
+  padding: 1rem;
+  background: #f3e5f5;
+  border-radius: 8px;
+}
+
+.balance-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.buy-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.buy-form input {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.cost-display {
+  font-weight: bold;
+  color: #666;
+}
+
+.buy-button {
+  padding: 0.75rem;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.buy-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Price Chart Styles */
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.time-range-selector {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.time-range-selector button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.time-range-selector button.active {
+  background: #2196f3;
+  color: white;
+  border-color: #2196f3;
+}
+
+.chart-container {
+  height: 400px;
+}
+
+/* Loading States */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.connect-prompt {
+  text-align: center;
+  padding: 2rem;
+  background: #fff3cd;
+  border-radius: 8px;
+  color: #856404;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .market-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Real-time status indicators */
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-indicator {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Producer card updates */
+.producer-card .status.online {
+  background: #4caf50;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.producer-card .status.offline {
+  background: #f44336;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.live-data {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+}
+
+/* Market data styles */
+.market-stats {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  grid-column: 1 / -1;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+}
+
+.price-change.positive {
+  color: #4caf50;
+  font-size: 0.9rem;
+}
+
+.price-change.negative {
+  color: #f44336;
+  font-size: 0.9rem;
+}
+
+/* Chart controls */
+.chart-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loading-indicator {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.chart-container {
+  height: 400px;
+  position: relative;
+}
+
+/* Heloooooooooooooooooooo */
+
+/* Enhanced Market Styles */
+.market-stats {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.stat-grid,
+.analytics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.stat-item,
+.analytic-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.stat-item:last-child,
+.analytic-item:last-child {
+  border-bottom: none;
+}
+
+/* Live Data Enhancement */
+.live-data {
+  background: #e8f5e8;
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.live-data hr {
+  margin: 0.5rem 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+/* Market Analytics */
+.market-analytics {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #f0f8ff;
+  border-radius: 8px;
+}
+
+/* Status Indicators */
+.status-indicator.connected {
+  color: #4caf50;
+}
+
+.status-indicator.disconnected {
+  color: #f44336;
+}
+
+/* Enhanced Buttons */
+.buy-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.buy-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.buy-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Marketplace Header */
+.marketplace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.currency-toggle {
+  display: flex;
+  background: #f0f0f0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.currency-toggle button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.currency-toggle button.active {
+  background: #2196f3;
+  color: white;
+}
+
+/* Price Display */
+.price-container {
+  text-align: center;
+}
+
+.price-main {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1976d2;
+  margin: 0.5rem 0;
+}
+
+.price-secondary {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Cost Breakdown */
+.cost-breakdown {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-left: 4px solid #2196f3;
+}
+
+.cost-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.cost-item.secondary {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.cost-main {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #1976d2;
+}
+
+.blockchain-notice {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 0.5rem;
+  background: #e3f2fd;
+  border-radius: 4px;
+}
+
+/* Enhanced Balance Info */
+.balance-info .balance-item span:last-child {
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .marketplace-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .currency-toggle {
+    width: 100%;
+  }
+
+  .currency-toggle button {
+    flex: 1;
+  }
+}
