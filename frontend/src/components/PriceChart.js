@@ -154,7 +154,7 @@ const PriceChart = () => {
               className={timeRange === '1h' ? 'active' : ''}
               onClick={() => setTimeRange('1h')}
             >
-              1H
+              5min
             </button>
             <button 
               className={timeRange === '24h' ? 'active' : ''}
